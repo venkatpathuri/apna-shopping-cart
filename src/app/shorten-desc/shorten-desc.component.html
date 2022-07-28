@@ -1,0 +1,18 @@
+<span *ngIf="text.length<=word_length">
+    {{text}}
+</span>
+<span *ngIf="text.length>=word_length && !showmore">
+
+    {{text.substring(0,word_length)}}...<span class="font-weight:bold; text-primary hand"  (click)="showmore=true">
+        Show More
+    </span>
+
+</span>
+
+<span *ngIf="text.length>=word_length && showmore">
+
+    {{text}}<span  class="font-weight:bold; text-primary hand" (click)="showmore=false">
+        Show Less
+    </span>
+
+</span>

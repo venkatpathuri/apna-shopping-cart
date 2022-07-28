@@ -1,0 +1,36 @@
+<table class="table">
+  <thead>
+    <tr>
+
+      <th scope="col">image</th>
+      <th scope="col">title</th>
+      <th scope="col">description</th>
+      <th scope="col">price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Decrease Quantity</th>
+      <th scope="col">Increase Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cart of cart_array;let i=index">
+
+      <td><img src="{{cart.image}}"></td>
+      <td>{{cart.title}}</td>
+      <!-- <td ><span>{{cart.description }}</span></td> -->
+      <td>
+        <app-shorten-desc [text]="cart.description" [word_length]="8"></app-shorten-desc>
+      </td>
+
+      <td>${{cart.price}}</td>
+      <td>{{cart.quantity}}</td>
+      <td><button class=" btn btn-danger" (click)="decreaseQuant(cart.quantity,i,cart.id)">Decrease</button></td>
+      <td><button class="btn btn-success" (click)="increaseQuant(cart.quantity,i,cart.id)">Increase</button></td>
+    </tr>
+
+  </tbody>
+</table>
+
+<h5>Sub Total:${{price | number:'1.1-2'}}</h5>
+<hr>
+<button class="btn btn-danger" (click)="emptyCart()">Empty Cart</button> | <button class="btn btn-success"
+  (click)="addMoreItems()">Add More Items</button>
